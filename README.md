@@ -26,3 +26,58 @@ It is an **incident-driven, production mindset journey**.
 ## 🧭 Weekly Structure
 
 Each week follows the same structure:
+
+week-XX-topic/
+├── broken/              # intentionally broken system or app
+├── fixed/               # resolved version
+├── incident-report.md   # professional incident report
+└── screenshots/         # evidence & monitoring visuals
+
+
+---
+
+## 🛠 Tools & Technologies
+
+- Linux (Ubuntu)
+- systemd, journalctl
+- Docker & Docker Compose
+- Spring Boot
+- PostgreSQL
+- Prometheus & Grafana
+- AWS EC2
+- GitHub Actions
+
+---
+
+## 🎯 Target Roles
+
+- Application Support Engineer
+- IT Operations Engineer
+- Production Support Engineer
+- Junior DevOps / Cloud Operations Engineer
+
+---
+
+## 📌 Weekly Progress
+
+- [ ] Week 01 – Linux Incident Basics
+- [ ] Week 02 – Application Support (500 Errors)
+- [ ] Week 03 – Docker Runtime Failures
+- [ ] Week 04 – Monitoring & Alerts
+- [ ] Week 05 – Cloud Operations (AWS)
+- [ ] Week 06 – CI/CD Failures
+- [ ] Week 07 – Full Incident Simulation
+- [ ] Week 08 – DevOps Transition & Final Review
+
+---
+
+## ⚠️ Disclaimer
+
+All incidents are **simulated in controlled environments** and do not represent real production systems.
+
+---
+
+## 🔗 Author
+
+**Mustafa Kadak**  
+Application Support → DevOps Journey
