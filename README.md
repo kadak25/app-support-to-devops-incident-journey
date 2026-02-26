@@ -23,15 +23,17 @@ It is an **incident-driven, production mindset journey**.
 
 ---
 
-## 🧭 Weekly Structure
+### 📁 Weekly Folder Structure
 
 Each week follows the same structure:
 
+```
 week-XX-topic/
 ├── broken/              # intentionally broken system or app
 ├── fixed/               # resolved version
 ├── incident-report.md   # professional incident report
 └── screenshots/         # evidence & monitoring visuals
+```
 
 
 ---
