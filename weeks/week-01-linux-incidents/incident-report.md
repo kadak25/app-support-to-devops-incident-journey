@@ -11,6 +11,14 @@ A production-like Linux incident was simulated where CPU usage spiked and remain
 ## Detection
 The issue was detected by manually monitoring system performance using `htop`, where abnormal and persistent CPU utilization was observed.
 
+## Evidence
+
+- CPU spike detection using htop  
+  ![CPU Spike](./screenshots/cpu-spike-detection.png)
+
+- Misbehaving systemd service identification  
+  ![Service Status](./screenshots/broken-app-service-status.png)
+
 ## Investigation
 - Used `htop` to identify a process consuming excessive CPU
 - Verified the process using `ps aux`
