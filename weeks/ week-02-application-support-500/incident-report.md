@@ -33,8 +33,8 @@ An intentionally added endpoint (`/broken`) threw an unhandled `RuntimeException
 ## Evidence
 
 ### Broken endpoint (HTTP 500)
-![500 response](screenshots/500-response-broken-endpoint.png)
+![500 response](https://raw.githubusercontent.com/kadak25/app-support-to-devops-incident-journey/main/weeks/week-02-application-support-500/screenshots/500-response-broken-endpoint.png)
 
 ### Post-fix verification
-![Fixed endpoint](screenshots/fixed-broken-endpoint.png)
+![Fixed endpoint](https://raw.githubusercontent.com/kadak25/app-support-to-devops-incident-journey/main/weeks/week-02-application-support-500/screenshots/fixed-broken-endpoint.png)
 
