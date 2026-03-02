@@ -31,5 +31,7 @@ An intentionally added endpoint (`/broken`) threw an unhandled `RuntimeException
 - Treat debug endpoints as non-production and keep them out of the main branch unless protected.
 
 ## Evidence
-- 500 response: `./screenshots/500-response-broken-endpoint.png`
-- Post-fix verification: `./screenshots/fixed-broken-endpoint.png`
+### Broken endpoint (HTTP 500)
+![500 response](./screenshots/500-response-broken-endpoint.png)
+### Post-fix verification
+![Fixed endpoint](./screenshots/fixed-broken-endpoint.png)
