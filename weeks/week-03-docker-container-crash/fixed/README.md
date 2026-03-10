@@ -2,12 +2,10 @@
 
 The missing environment variable was provided during container startup.
 
-After adding the required configuration the container starts successfully and the application becomes reachable.
+After adding `DB_HOST=localhost`, the container started successfully and remained in a running state.
 
 Verification steps:
 
-- Container running normally
-- Application responding to requests
-- No startup errors in container logs
-
-This represents the system state after remediation.
+- Container status shows `Up`
+- No startup errors in logs
+- Application startup message printed successfully
