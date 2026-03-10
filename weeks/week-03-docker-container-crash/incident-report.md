@@ -43,14 +43,11 @@ This caused the application to fail during initialization, which led Docker to c
 
 ## Evidence
 
-- Container restart loop observed via docker ps
-
-![Container restart](./screenshots/docker-restart-loop.png)
+- Container exited due to missing environment variable
+![Container exited](./screenshots/docker-container-exited.png)
 
 - Error visible in container logs
+![Container logs](./screenshots/docker-error-log.png)
 
-![Container logs](./screenshots/docker-error-logs.png)
-
-- Successful application response after fix
-
-![Application response](./screenshots/docker-fix-verification.png)
+- Container running successfully after fix
+![Container running](./screenshots/docker-container-running.png)
