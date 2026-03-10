@@ -1,15 +1,12 @@
 # Broken State
 
-The application container fails to start due to a missing required environment variable.
+The Docker container fails to start because a required environment variable is missing.
 
-During container startup the application expects a database host configuration, but the variable is not provided.
+During startup the application checks for the `DB_HOST` variable.  
+Since the variable is not provided, the application exits with an error.
 
-As a result the container exits immediately and enters a restart loop.
+Symptoms observed:
 
-Symptoms:
-
-- Container repeatedly restarting
-- Application not reachable
-- Error visible in container logs
-
-This represents the system state before the fix.
+- Container exits immediately
+- Docker reports `Exited (1)`
+- Error message visible in container logs
