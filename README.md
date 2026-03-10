@@ -64,7 +64,7 @@ week-XX-topic/
 
 - [x] Week 01 – Linux Incident Basics
 - [x] Week 02 – Application Support (500 Errors)
-- [ ] Week 03 – Docker Runtime Failures
+- [x] Week 03 – Docker Runtime Failures
 - [ ] Week 04 – Monitoring & Alerts
 - [ ] Week 05 – Cloud Operations (AWS)
 - [ ] Week 06 – CI/CD Failures
