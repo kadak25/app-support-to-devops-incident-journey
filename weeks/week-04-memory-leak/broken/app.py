@@ -25,6 +25,4 @@ while True:
     time.sleep(0.5)
 ```
 
-**Commit message:**
-```
-add week-04 broken app.py - memory leak simulation
+
