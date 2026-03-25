@@ -65,7 +65,7 @@ week-XX-topic/
 - [x] Week 01 – Linux Incident Basics
 - [x] Week 02 – Application Support (500 Errors)
 - [x] Week 03 – Docker Runtime Failures
-- [ ] Week 04 – Monitoring & Alerts
+- [x] Week 04 – OOM Kill & Memory Leak (Container Resource Management)
 - [ ] Week 05 – Cloud Operations (AWS)
 - [ ] Week 06 – CI/CD Failures
 - [ ] Week 07 – Full Incident Simulation
