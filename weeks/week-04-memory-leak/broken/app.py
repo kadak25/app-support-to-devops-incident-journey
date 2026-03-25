@@ -23,6 +23,6 @@ while True:
     total_mb = counter * 10
     print(f"[+] Allocated chunk #{counter} | Total: ~{total_mb} MB in memory", flush=True)
     time.sleep(0.5)
-```
+
 
 
