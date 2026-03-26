@@ -1,54 +1,69 @@
-# Week 04 – Container OOM Kill Incident
-
-## Summary
-
-A containerized Python application continuously allocated memory without releasing it, causing the container to be killed by the OOM Killer with exit code 137.
-
----
-
 ## Investigation
 
-* Observed that the container was not staying in a running state.
-* Checked container status using `docker ps -a`.
-* Identified exit code 137 indicating OOM Kill.
-* Inspected memory usage using `docker stats` to confirm RAM growth.
-* Reviewed logs using `docker logs` to see last allocated chunks.
+- Container was exiting unexpectedly after a short period.
+- Checked container status using `docker ps -a` → Exited (137).
+- Observed increasing memory usage via `docker stats`.
+- Inspected logs using `docker logs`.
 
 ---
 
 ## Root Cause
 
-The application appended 10MB chunks to a list in an infinite loop without ever releasing memory. Python's garbage collector could not free the memory because an active reference kept it alive. Once the container reached its 100MB memory limit, the OOM Killer sent SIGKILL and terminated the process.
+The application continuously allocated memory in an infinite loop, causing a memory leak.
+
+Due to the memory limit (`-m 100m`), the container exceeded its limit and was killed by the system (OOM Kill, exit code 137).
 
 ---
 
 ## Resolution
 
-* Fixed the application to delete each chunk after use and call `gc.collect()`.
-* Rebuilt the image and restarted the container with the same memory limit.
-* Verified that memory usage stayed stable at ~13MiB.
+- Stopped and removed the failing container.
+- Fixed the application logic to avoid unbounded memory allocation.
+- Rebuilt and restarted the container.
 
 ---
 
 ## Prevention / Follow-up
 
-* Always set memory limits on containers in production.
-* Avoid appending to unbounded lists in long-running processes.
-* Use `docker stats` regularly to monitor container resource usage.
-* Add alerting for containers that exit unexpectedly.
+- Always define memory limits for containers.
+- Monitor memory usage (`docker stats` or metrics systems).
+- Avoid unbounded data structures in application code.
+- Implement alerting for abnormal memory growth.
 
 ---
 
 ## Evidence
 
-* Memory usage growing — RAM at 99.62% before OOM Kill
-  [![docker stats memory growing](https://github.com/kadak25/app-support-to-devops-incident-journey/raw/main/weeks/week-04-memory-leak/screenshots/01-docker-stats-memory-growing.png)](https://github.com/kadak25/app-support-to-devops-incident-journey/blob/main/weeks/week-04-memory-leak/screenshots/01-docker-stats-memory-growing.png)
+- Memory usage spike
+![Memory](./screenshots/01-docker-stats-memory-growing.png)
 
-* Container exited with code 137 — OOM Kill confirmed
-  [![docker ps exited 137](https://github.com/kadak25/app-support-to-devops-incident-journey/raw/main/weeks/week-04-memory-leak/screenshots/02-docker-ps-exited-137.png)](https://github.com/kadak25/app-support-to-devops-incident-journey/blob/main/weeks/week-04-memory-leak/screenshots/02-docker-ps-exited-137.png)
+- Container killed (Exited 137)
+![OOM](./screenshots/02-docker-ps-exited-137.png)
 
-* Application logs showing memory chunks allocated until crash
-  [![docker logs chunks](https://github.com/kadak25/app-support-to-devops-incident-journey/raw/main/weeks/week-04-memory-leak/screenshots/03-docker-logs-chunks.png)](https://github.com/kadak25/app-support-to-devops-incident-journey/blob/main/weeks/week-04-memory-leak/screenshots/03-docker-logs-chunks.png)
+- Logs before crash
+![Logs](./screenshots/03-docker-logs-chunks.png)
 
-* Fixed application — memory stable at 13.91MiB
-  [![fixed memory stable](https://github.com/kadak25/app-support-to-devops-incident-journey/raw/main/weeks/week-04-memory-leak/screenshots/04-fixed-memory-stable.png)](https://github.com/kadak25/app-support-to-devops-incident-journey/blob/main/weeks/week-04-memory-leak/screenshots/04-fixed-memory-stable.png)
+- Fixed container running stable
+![Fixed](./screenshots/04-fixed-memory-stable.png)
+
+---
+
+## Advanced Analysis (Week 04)
+
+### Exit Code 137
+
+Exit 137 indicates that the container was terminated by the system (SIGKILL), typically due to an Out Of Memory (OOM) condition.
+
+### Timeline
+
+- T+00s → Container started
+- T+10s → Memory usage increasing
+- T+50s → Memory limit reached
+- T+50s → OOM Kill triggered
+- T+55s → Container exited (137)
+
+### Impact
+
+- Container crashed → service unavailable
+- No data loss (stateless)
+- No alerting mechanism in place
