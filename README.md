@@ -67,7 +67,7 @@ week-XX-topic/
 - [x] Week 03 – Docker Runtime Failures
 - [x] Week 04 – OOM Kill & Memory Leak (Container Resource Management)
 - [x] Week 05 – Cloud Operations (AWS + Nginx)
-- [ ] Week 06 – CI/CD Failures
+- [x] Week 06 – CI/CD Failures
 - [ ] Week 07 – Full Incident Simulation
 - [ ] Week 08 – DevOps Transition & Final Review
 
