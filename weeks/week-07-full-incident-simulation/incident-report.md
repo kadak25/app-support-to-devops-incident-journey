@@ -67,8 +67,8 @@ was no versioned image to roll back to without rebuilding from source.
 ### Screenshot 05 — Fixed App Running (restart: always)
 ![Fixed App](screenshots/05-fixed-app-running.png)
 
-### Screenshot 06 — Pipeline Green (SHA tagging)
-![Pipeline Green](screenshots/06-pipeline-green.png)
+### Screenshot 06 — Auto Recovery (restart: always)
+![Auto Recovery](screenshots/06-auto-recovery.png)
 
 ## Timeline
 - T+00s → Application starts, memory usage normal
