@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    # BUG: No restart policy — container stays down after OOM Kill
+    # BUG: No memory limit defined at compose level
+    # BUG: No health check — NGINX won't know app is down
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app
+    # BUG: No restart policy on NGINX either
