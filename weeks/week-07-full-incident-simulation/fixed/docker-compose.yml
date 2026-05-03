@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    # FIX: restart: always — container recovers automatically after crash
+    restart: always
+    # FIX: Memory limit at compose level — prevents host resource exhaustion
+    mem_limit: 512m
+    # FIX: Health check — NGINX and Docker know when app is truly ready
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    # FIX: restart: always on NGINX too
+    restart: always
+    depends_on:
+      app:
+        condition: service_healthy
