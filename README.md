@@ -69,7 +69,7 @@ week-XX-topic/
 - [x] Week 05 – Cloud Operations (AWS + Nginx)
 - [x] Week 06 – CI/CD Failures
 - [x] Week 07 – Full Incident Simulation
-- [ ] Week 08 – DevOps Transition & Final Review
+- [x] Week 08 – DevOps Transition & Final Review
 
 ---
 
